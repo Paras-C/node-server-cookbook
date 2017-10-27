@@ -12,7 +12,7 @@ unless os.windows?
   end
 end
 
-# This is an example test, replace it with your own test.
+
 describe package 'nginx' do
   it { should be_installed }
 end

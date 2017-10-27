@@ -46,18 +46,16 @@ describe 'node-server::default' do
       expect(chef_run).to upgrade_package 'nodejs'
     end
 
-    # it 'installs npm' do
-    #   expect(chef_run).to install_package 'npm'
-    # end 
-
-    # it 'installs pm2' do
-    #   expect(chef_run).to install_package 'pm2'
-    # end
 
     it 'installs pm2 with npm' do
       expect(chef_run).to run_execute 'npm install pm2 -g'
     end
 
+    it 'apt-updates' do
+      expect(chef_run).to update_apt_update 'update'
+    end
+
+    
 
   end
 end

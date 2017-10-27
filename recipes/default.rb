@@ -3,7 +3,10 @@
 # Recipe:: default
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
-apt_update
+
+apt_update 'update' do
+  action :update
+end
 
 
 package 'nginx'
@@ -30,3 +33,29 @@ end
 execute 'install pm2' do 
   command 'npm install pm2 -g'
 end
+
+
+link '/home/nginx/sites-enabled/default' do
+  action :delete
+end
+
+template '/etc/nginx/sites-available/reverse-proxy.conf' do
+  source 'reverse-proxy.conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
+link '/etc/nginx/sites-available/reverse-proxy.conf' do
+  to '/etc/nginx/sites-enabled/reverse-proxy.conf'
+  action :create
+end
+
+service 'nginx' do
+  action :restart
+end
+
+
+
+
+
