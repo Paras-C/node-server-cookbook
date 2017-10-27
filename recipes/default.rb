@@ -35,21 +35,21 @@ execute 'install pm2' do
 end
 
 
-link '/home/nginx/sites-enabled/default' do
-  action :delete
-end
+# link '/home/nginx/sites-enabled/default' do
+#   action :delete
+# end
 
-template '/etc/nginx/sites-available/reverse-proxy.conf' do
+template '/etc/nginx/sites-available/default' do
   source 'reverse-proxy.conf.erb'
   owner 'root'
   group 'root'
   mode '0755'
 end
 
-link '/etc/nginx/sites-available/reverse-proxy.conf' do
-  to '/etc/nginx/sites-enabled/reverse-proxy.conf'
-  action :create
-end
+# link '/etc/nginx/sites-available/reverse-proxy.conf' do
+#   to '/etc/nginx/sites-enabled/reverse-proxy.conf'
+#   action :create
+# end
 
 service 'nginx' do
   action :restart
