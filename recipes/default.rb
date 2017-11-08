@@ -55,6 +55,11 @@ service 'nginx' do
   action :restart
 end
 
+execute 'start pm2' do
+  cwd "/home/ubuntu/app"
+  command 'sudo pm2 start app.js'
+end
+
 
 
 
