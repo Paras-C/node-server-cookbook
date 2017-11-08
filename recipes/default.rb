@@ -60,6 +60,15 @@ execute 'start pm2' do
   command 'sudo pm2 start app.js'
 end
 
+execute "saving pm2" do
+  cwd "/home/ubuntu/app"
+  command "sudo pm2 save"
+end
+
+execute "run pm2" do
+  cwd "/home/ubuntu/app"
+  command "sudo pm2 startup"
+end
 
 
 
