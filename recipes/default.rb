@@ -55,20 +55,20 @@ service 'nginx' do
   action :restart
 end
 
-execute 'start pm2' do
-  cwd "/home/ubuntu/app"
-  command 'sudo pm2 start app.js'
-end
+# execute 'start pm2' do
+#   cwd "/home/ubuntu/app"
+#   command 'sudo pm2 start app.js'
+# end
 
-execute "saving pm2" do
-  cwd "/home/ubuntu/app"
-  command "sudo pm2 save"
-end
+# execute "saving pm2" do
+#   cwd "/home/ubuntu/app"
+#   command "sudo pm2 save"
+# end
 
-execute "run pm2" do
-  cwd "/home/ubuntu/app"
-  command "sudo pm2 startup"
-end
+# execute "run pm2" do
+#   cwd "/home/ubuntu/app"
+#   command "sudo pm2 startup"
+# end
 
 
 
