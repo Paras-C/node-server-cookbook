@@ -35,10 +35,6 @@ execute 'install pm2' do
 end
 
 
-# link '/home/nginx/sites-enabled/default' do
-#   action :delete
-# end
-
 template '/etc/nginx/sites-available/default' do
   source 'reverse-proxy.conf.erb'
   owner 'root'
@@ -46,29 +42,11 @@ template '/etc/nginx/sites-available/default' do
   mode '0755'
 end
 
-# link '/etc/nginx/sites-available/reverse-proxy.conf' do
-#   to '/etc/nginx/sites-enabled/reverse-proxy.conf'
-#   action :create
-# end
 
 service 'nginx' do
   action :restart
 end
 
-# execute 'start pm2' do
-#   cwd "/home/ubuntu/app"
-#   command 'sudo pm2 start app.js'
-# end
-
-# execute "saving pm2" do
-#   cwd "/home/ubuntu/app"
-#   command "sudo pm2 save"
-# end
-
-# execute "run pm2" do
-#   cwd "/home/ubuntu/app"
-#   command "sudo pm2 startup"
-# end
 
 
 
